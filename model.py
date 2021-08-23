@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import RobustScaler
 from sklearn import preprocessing
 from sklearn import linear_model
@@ -12,7 +12,7 @@ from sklearn.model_selection import cross_val_score
 """
 def data_handle():
     data = pd.read_excel("data/text.xlsx", header=None)
-    data = data.ix[:, 1:8]
+    data = data.iloc[:, 1:9]
     data.columns = ["radar_1", "radar_2", "radar_3", "radar_4", "radar_5", "radar_6", "radar_7", "radar_8"]
     label = data.pop("radar_8")
     train_X, test_X, train_y, test_y = train_test_split(data, label, test_size=0.2, random_state=0)
